@@ -1,4 +1,6 @@
 // Update with your config settings.
+require("dotenv").config()
+
 
 module.exports = {
 
@@ -8,11 +10,19 @@ module.exports = {
     connection: {
       filename: './database/migrations'
     },
+    pool: {
+      afterCreate: (conn, done) => {
+        // runs after a connection is made to the sqlite engine
+        conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
+      },
+    },
     migrations: {
       directory: './database/migrations'
     },
     seeds: {directory: './database/seeds'}
   },
+
+
 
   staging: {
     client: 'postgresql',
