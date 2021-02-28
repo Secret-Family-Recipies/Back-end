@@ -10,30 +10,30 @@ module.exports = {
     removeRecipe
 }
 
-function findRecipe () {
+function findRecipe() {
     return db('recipes')
 }
 
-function findRecipeById (id) {
+function findRecipeById(id) {
     return db('recipes')
     .where({id: id})
     .first()
 }
 
 
-function addRecipe (recipe) {
+function addRecipe(recipe) {
     return db('recipes')
     .insert(recipe)
     .then(ids => ({ id: ids[0]}))
 }
 
-function updateRecipe ( id,recipe) {
+function updateRecipe( id,recipe) {
     return db('recipes')
     .where({id: id})
     .update(recipe)
 }
 
-function removeRecipe (id) {
+function removeRecipe(id) {
     return db('recipes')
     .where({id: id})
     .del()
