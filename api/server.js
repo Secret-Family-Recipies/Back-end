@@ -1,26 +1,28 @@
-// express server 
-
+// express server
+const { restrict } = require("../middleware/authUsers-middleware");
 
 // global middleware
-const express = require("express")
-const cors = require("cors")
-const helmet = require("helmet")
-
-
+const express = require("express");
+const cors = require("cors");
+const helmet = require("helmet");
 
 // express router imports here
+const authRouter = require("../auth/auth-router");
+const usersRouter = require("../users/users-router");
 
-
-const server = express()
+const server = express();
 
 // in action
-server.use(helmet())
-server.use(express.json())
-server.use(cors())
-
+server.use(helmet());
+server.use(express.json());
+server.use(cors());
 
 server.get("/", (req, res) => {
-res.json({api: "up"})
-})
+  res.json({ api: "up" });
+});
 
-module.exports = server
+//server endpoints --->
+server.use("/api/auth", authRouter);
+server.use("/api/users", restrict(), usersRouter);
+
+module.exports = server;
