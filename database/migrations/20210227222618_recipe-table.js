@@ -5,13 +5,14 @@ exports.up = function(knex) {
       t.string("title", 128)
       .notNullable()
       .unique()
-      t.string("created-by", 128)
+      t.string("createdBy", 128)
       .notNullable()
       t.string("ingredients", 128)
       .notNullable()
+      t.string("instructions", 228).notNullable()
   })
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTableIdExists('recipes')
+  return knex.schema.dropTableIfExists('recipes')
 };
