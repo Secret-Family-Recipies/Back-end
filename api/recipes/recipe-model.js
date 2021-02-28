@@ -21,20 +21,18 @@ function findRecipeById(id) {
 }
 
 
-function addRecipe(recipe) {
-    return db('recipes')
-    .insert(recipe)
-    .then(ids => ({ id: ids[0]}))
+async function addRecipe(recipe) {
+    const id = await db("recipes").insert(recipe, "id")
+    return newRecipe = await findRecipeById(id[0])
 }
 
-function updateRecipe( id,recipe) {
-    return db('recipes')
-    .where({id: id})
-    .update(recipe)
+async function updateRecipe( id, changes) {
+    await db('recipes').where({ id }).update(changes)
+    return await findRecipeById(id)
 }
 
 function removeRecipe(id) {
-    return db('recipes')
-    .where({id: id})
+    return await db('recipes')
     .del()
+    .where({id})
 }
