@@ -1,6 +1,4 @@
-const knex = require('knex')
-const knexConfig = require('../../knexfile.js')
-const db = knex(knexConfig.development)
+const db = require('../../database/dbConfig')
 
 module.exports = {
     addRecipe,
@@ -32,7 +30,7 @@ async function updateRecipe( id, changes) {
 }
 
 function removeRecipe(id) {
-    return await db('recipes')
+    return db('recipes')
     .del()
     .where({id})
 }
