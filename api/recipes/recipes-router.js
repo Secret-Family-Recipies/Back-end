@@ -75,4 +75,4 @@ router.delete('/:id', async (req,res) => {
     }
 })
 
-module.exports = express
+module.exports = router
