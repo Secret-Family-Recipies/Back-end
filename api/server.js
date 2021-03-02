@@ -22,7 +22,7 @@ server.get("/", (req, res) => {
   res.json({ api: "up" });
 });
 
-//server endpoints --->
+//server endpoints ---
 server.use("/api/auth", authRouter);
 server.use("/api/users", restrict(), usersRouter);
 server.use("/api/recipes", recipeRouter)
