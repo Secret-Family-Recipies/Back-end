@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Recipes = require('./recipe-model')
 
+// /api/recipe
 //read
 router.get('/', async (req,res) => {
     try{
