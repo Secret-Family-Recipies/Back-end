@@ -11,7 +11,7 @@
 example:
 
 ```
-username:"jonjim"
+username:"JennaB"
 password:"numberOne"
 ```
 
@@ -20,11 +20,11 @@ Post /api/auth/login
 example:
 
 ```
-username:"jonjim"
-password:"numberOne@yahoo.com"
+username:"JennaB"
+password:"numberOne"
 ```
 
-### Recipe Routes
+### Recipe Endpoints
 
 /api/recipes
 
