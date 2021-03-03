@@ -12,7 +12,9 @@ router.get("/", (req, res, next) => {
         ? res.status(200).json(user)
         : res.status(404).json({ message: `no users found` });
     })
-    .catch((err) => next(err));
+    .catch((err) => {
+      res.status(500).json({ message: "500 server error, can't get users" });
+    });
 });
 
 //GET /api/users/:id

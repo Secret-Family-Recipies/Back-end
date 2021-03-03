@@ -37,7 +37,7 @@ function validateRegisterPost() {
     const user = req.body;
 
     if (!user.username || !user.password) {
-      return res.json({ message: "check username and password.." });
+      return res.json({ message: "check username and password properties" });
     }
 
     next();
@@ -50,7 +50,7 @@ function validateLoginPost() {
     const credentials = req.body;
 
     if (!credentials.username || !credentials.password) {
-      return res.json({ message: "check username and password" });
+      return res.json({ message: "check username and password properties" });
     }
 
     next();
