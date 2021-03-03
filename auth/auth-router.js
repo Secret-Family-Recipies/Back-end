@@ -31,7 +31,7 @@ router.post("/register", validateRegisterPost(), (req, res, next) => {
 });
 
 //POST /api/auth/login
-// {username: "", email: ""}
+// {username: "", password: ""}
 router.post("/login", validateLoginPost(), (req, res, next) => {
   const credentials = req.body;
 
