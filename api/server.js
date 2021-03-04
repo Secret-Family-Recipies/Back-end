@@ -25,6 +25,6 @@ server.get("/", (req, res) => {
 //server endpoints ---
 server.use("/api/auth", authRouter);
 server.use("/api/users", restrict(), usersRouter);
-server.use("/api/recipes", restrict(), recipeRouter);
+server.use("/api/recipes", recipeRouter);
 
 module.exports = server;
