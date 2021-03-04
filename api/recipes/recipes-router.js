@@ -31,9 +31,8 @@ router.get('/:id', async (req,res) => {
 
 //create
 router.post('/', async (req,res) => {
-    const {title, createdBy, ingredients, instructions} = req.body
     try{
-        const recipe = await Recipes.addRecipe({title, createdBy, ingredients, instructions})
+        const recipe = await Recipes.addRecipe(req.body)
        res.json(recipe)
     }catch (err) {
         console.log(err)
