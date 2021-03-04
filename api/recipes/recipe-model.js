@@ -20,7 +20,7 @@ function findRecipeById(id) {
 
 
 async function addRecipe(recipe) {
-    const id = await db("recipes").insert(recipe, "id")
+    const [id] = await db("recipes").insert(recipe, "id")
     return newRecipe = await findRecipeById(id[0])
 }
 
