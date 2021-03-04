@@ -23,7 +23,7 @@ router.post("/register", validateRegisterPost(), (req, res, next) => {
   Users.addUser(user)
     .then((newUser) => {
       const token = generateToken(newUser);
-      res.status(201).json({ new_user_created: newUser });
+      res.status(201).json({ new_user_created: newUser, token });
     })
     .catch((err) => {
       res.status(500).json({ message: `${user.username} taken` });
