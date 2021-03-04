@@ -30,15 +30,33 @@ router.get('/:id', async (req,res) => {
 })
 
 //create
-router.post('/', async (req,res) => {
+/*router.post('/', async (req,res) => {
+    const {title, createdBy, ingredients, instructions} = req.body
     try{
-        const recipe = await Recipes.addRecipe(req.body)
+        const recipe = await Recipes.addRecipe({title, createdBy, ingredients, instructions})
        res.json(recipe)
     }catch (err) {
         console.log(err)
         res.status(500).json({message: 'db error', error: err})
     }
-})
+})*/
+
+router.post('/', (req, res) => {
+    const {title, createdBy, ingredients, instructions} = req.body
+    Recipes.addRecipe({title, createdBy, ingredients, instructions})
+        .then(count => {
+            Recipes.findRecipe(req.params.id)
+                .then(function (data) {
+                    res.json(data);
+                })
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json(err);
+        });
+});
+
+
 
 //update
 router.put('/:id', async (req,res) => {
